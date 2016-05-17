@@ -20,6 +20,14 @@
             %image{:height => "18", :width => "18", :x => "-9", "xlink:href" => image_path('/assets/100/middleware_deployment.png'), :y => "-9"}
         %label
           = _("Middleware Deployments")
+      %kubernetes-topology-icon{tooltipOptions, :kind => "MiddlewareDatasource"}
+        %svg.kube-topology
+          %g.MiddlewareDatasource{:transform => "translate(21, 21)"}
+            %circle{:r => "17"}
+            -# fa-database
+            %text{:x => "0", :y => "6", :class => "fa fa-database", :style => "fill: #81B0C8;"} &#xF1C0;
+        %label
+          = _("Middleware Datasources")
 
   .alert.alert-info.alert-dismissable
     %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"}

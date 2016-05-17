@@ -7,6 +7,7 @@ function MiddlewareTopologyCtrl($scope, $http, $interval, $location, topologySer
     var self = this;
     $scope.vs = null;
     var d3 = window.d3;
+    var icons = null;
 
     $scope.refresh = function() {
         var id;
@@ -22,6 +23,7 @@ function MiddlewareTopologyCtrl($scope, $http, $interval, $location, topologySer
             $scope.items = data.data.items;
             $scope.relations = data.data.relations;
             $scope.kinds = data.data.kinds;
+            icons = data.data.icons;
             if (currentSelectedKinds && (Object.keys(currentSelectedKinds).length !=  Object.keys($scope.kinds).length)) {
                 $scope.kinds = currentSelectedKinds;
             }
@@ -37,12 +39,12 @@ function MiddlewareTopologyCtrl($scope, $http, $interval, $location, topologySer
     $scope.show_hide_names = function() {
        var vertices = $scope.vs;
 
-       if($scope.checkboxModel.value) {
-            vertices.selectAll("text")
+       if ($scope.checkboxModel.value) {
+            vertices.selectAll("text.attached-label")
                .style("display", "block");
        }
        else {
-           vertices.selectAll("text")
+           vertices.selectAll("text.attached-label")
               .style("display", "none");
        }
     };
@@ -62,7 +64,7 @@ function MiddlewareTopologyCtrl($scope, $http, $interval, $location, topologySer
          */
         added.attr("class", function(d) { return d.item.kind; });
         added.append("circle")
-            .attr("r", function(d) { return self.getDimensions(d).r})
+            .attr("r", function(d) { return getCircleDimensions(d).r})
             .attr('class' , function(d) {
               return topologyService.getItemStatusClass(d);
             });
@@ -71,17 +73,53 @@ function MiddlewareTopologyCtrl($scope, $http, $interval, $location, topologySer
             return self.dblclick(d);});
         added.append("image")
             .attr("xlink:href",function(d) {
-                return "/assets/svg/" + self.class_name(d) + ".svg";
+                var iconInfo = self.getIcon(d);
+                switch(iconInfo.type) {
+                    case 'image':
+                        return iconInfo.icon;
+                    case "glyph": // the icon will be provided as a text
+                        return null;
+                }
             })
-            .attr("y", function(d) { return self.getDimensions(d).y})
-            .attr("x", function(d) { return self.getDimensions(d).x})
-            .attr("height", function(d) { return self.getDimensions(d).height})
-            .attr("width", function(d) { return self.getDimensions(d).width});
+            .attr("y", function(d) { return getCircleDimensions(d).y})
+            .attr("x", function(d) { return getCircleDimensions(d).x})
+            .attr("height", function(d) { return getCircleDimensions(d).height})
+            .attr("width", function(d) { return getCircleDimensions(d).width});
+        // attached labels
         added.append("text")
             .attr("x", 26)
             .attr("y", 24)
-            .text(function(d) { return d.item.name }).style("font-size", function(d) {return "12px"}).style("fill", function(d) {return "black"})
-            .style("display", function(d) {if ($scope.checkboxModel.value) {return "block"} else {return "none"}});
+            .text(function(d) {
+                return d.item.name 
+            })
+            .attr('class', 'attached-label')
+            .style("font-size", function(d) {
+                return "12px"
+            })
+            .style("fill", function(d) {
+                return "black"
+            })
+            .style("display", function(d) {
+                if ($scope.checkboxModel.value) {
+                    return "block"
+                } else {
+                    return "none"
+                }
+            });
+        // possible glyphs
+        added.append("text")
+            .each(function(d) {
+                var iconInfo = self.getIcon(d);
+                if (iconInfo.type != 'glyph') return;
+                $(this).text(iconInfo.icon)
+                    .attr("class", "glyph")
+                    .attr('font-family', iconInfo.fontfamily)
+                    .attr('style', 'fill: ' + getGlyphFeatures(d).color + ';');
+            })
+            .attr("x", function(d) { return getTextPosition(d).x})
+            .attr("y", function(d) { return getTextPosition(d).y});
+            // .text(function(d) { return d.item.name }).style("font-size", function(d) {return "12px"}).style("fill", function(d) {return "black"})
+            // .style("display", function(d) {if ($scope.checkboxModel.value) {return "block"} else {return "none"}});
 
         added.selectAll("title").text(function(d) {
             return topologyService.tooltip(d).join("\n");
@@ -92,7 +130,17 @@ function MiddlewareTopologyCtrl($scope, $http, $interval, $location, topologySer
         ev.preventDefault();
     });
 
-    self.class_name = function class_name(d) {
+    this.getIcon = function getIcon(d) {
+        if (d.item.icon) {
+            return {
+                'type': 'image',
+                'icon': "/assets/svg/" + class_name(d) + ".svg"
+            }
+        }
+        return icons[d.item.kind]
+    };
+
+    function class_name(d) {
         var class_name = d.item.icon;
         return class_name;
     };
@@ -101,7 +149,7 @@ function MiddlewareTopologyCtrl($scope, $http, $interval, $location, topologySer
       window.location.assign(topologyService.geturl(d));
     };
 
-    self.getDimensions = function getDimensions(d) {
+    function getCircleDimensions(d) {
         switch (d.item.kind) {
             case "MiddlewareManager":
                 return { x: -20, y: -20, height: 40, width: 40, r: 28};
@@ -112,8 +160,25 @@ function MiddlewareTopologyCtrl($scope, $http, $interval, $location, topologySer
             default :
                 return { x: -9, y: -9, height: 18, width: 18, r: 17};
         }
+    }
 
-    };
+    function getTextPosition(d) {
+        switch (d.item.kind) {
+            case "MiddlewareDatasource" :
+                return { x: 0, y: 8};
+            default :
+                return { x: 26, y: 24};
+        }
+    }
+
+    function getGlyphFeatures(d) {
+        switch (d.item.kind) {
+            case "MiddlewareDatasource" :
+                return { color: '#81B0C8'};
+            default :
+                return { color: '#000'};
+        }
+    }
 
     $scope.searchNode = function() {
       var svg = topologyService.getSVG(d3);
