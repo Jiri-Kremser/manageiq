@@ -690,13 +690,24 @@ class ApplicationHelper::ToolbarBuilder
       when "configured_system_provision"
         return true unless @record.provisionable?
       end
-    when 'MiddlewareServer', 'MiddlewareDeployment', 'MiddlewareDatasource'
-      if %w(middleware_deployment_add middleware_jdbc_driver_add middleware_datasource_add middleware_deployment_enable
+      when 'MiddlewareServer', 'MiddlewareDeployment', 'MiddlewareDatasource'
+      if (@record.try(:in_domain?) || @record.try(:middleware_server).try(:in_domain?))
+        # domain
+        if %w(middleware_deployment_add middleware_jdbc_driver_add middleware_datasource_add middleware_deployment_enable
             middleware_datasource_remove middleware_deployment_restart middleware_deployment_disable
-            middleware_deployment_undeploy).include?(id) &&
-         (@record.try(:in_domain?) || @record.try(:middleware_server).try(:in_domain?))
-        return true
+            middleware_server_stop middleware_server_restart middleware_server_shutdown
+            middleware_deployment_undeploy).include?(id)
+          return true
+        end
+      else
+        # standalone
+        if %w(middleware_domain_server_start middleware_domain_server_stop
+              middleware_domain_server_restart middleware_domain_server_kill).include?(id)
+          return true
+        end
       end
+
+      # hide the operations for the hawkular server
       return true if %w(middleware_server_shutdown middleware_server_restart middleware_server_stop
                         middleware_server_suspend middleware_server_resume middleware_server_reload
                         middleware_deployment_restart middleware_deployment_disable middleware_deployment_enable
