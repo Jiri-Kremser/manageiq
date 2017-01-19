@@ -27,6 +27,9 @@ module ManageIQ::Providers
     has_many :middleware_deployments, :foreign_key => :ems_id, :dependent => :destroy
     has_many :middleware_datasources, :foreign_key => :ems_id, :dependent => :destroy
     has_many :middleware_messagings, :foreign_key => :ems_id, :dependent => :destroy
+    has_many :middleware_fuse_servers, :foreign_key => :ems_id, :dependent => :destroy
+    has_many :middleware_camel_contexts, :foreign_key => :ems_id, :dependent => :destroy
+    has_many :middleware_camel_entities, :foreign_key => :ems_id, :dependent => :destroy
 
     attr_accessor :client
 
