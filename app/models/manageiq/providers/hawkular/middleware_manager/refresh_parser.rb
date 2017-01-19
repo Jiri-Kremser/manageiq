@@ -20,6 +20,7 @@ module ManageIQ::Providers
         fetch_domains_with_servers
         fetch_server_entities
         fetch_availability
+        fetch_fuse_entities
         @data
       end
 
@@ -166,6 +167,37 @@ module ManageIQ::Providers
         end
       end
 
+      def fetch_fuse_entities
+        @data[:middleware_fuse_servers] = []
+        @ems.feeds.each do |feed|
+          path = ::Hawkular::Inventory::CanonicalPath.new(:feed_id          => hawk_escape_id(feed),
+                                                          :resource_type_id => hawk_escape_id('Fuse MBean'))
+          fuse_servers = @ems.inventory_client.list_resources_for_type(path.to_s, :fetch_properties => true)
+          fuse_servers.each do |fuse_server|
+            parsed_fuse_server = parse_fuse_server(fuse_server)
+
+            # fetch the Camel contexts
+            parsed_fuse_server[:middleware_camel_contexts] = []
+            @ems.child_resources(fuse_server.path, false).each do |context|
+              next unless context.type_path.end_with?('Camel%20Context')
+              parsed_camel_context = parse_camel_context(context)
+              parsed_camel_context[:middleware_camel_entities] = []
+              @ems.child_resources(context.path, false).each do |child|
+                next unless child.type_path.end_with?('Camel%20Components', 'Camel%20Consumers', 'Camel%20Endpoints',
+                                                      'Camel%20Error%20Handlers', 'Camel%20Event Notifiers',
+                                                      'Camel%20Processor', 'Camel%20Services', 'Camel%20Tracer')
+                child_config = @ems.inventory_client.get_config_data_for_resource(child.path)
+                parsed_camel_entity = parse_camel_entity(child, child_config)
+                parsed_camel_context[:middleware_camel_entities] << parsed_camel_entity
+              end
+              parsed_fuse_server[:middleware_camel_contexts] << parsed_camel_context
+            end
+            @data[:middleware_fuse_servers] << parsed_fuse_server
+          end
+        end
+        binding.pry
+      end
+
       def process_entity_with_config(server, entity, continuation)
         entity_id = hawk_escape_id entity.id
         server_path = ::Hawkular::Inventory::CanonicalPath.parse(server[:ems_ref])
@@ -280,6 +312,33 @@ module ManageIQ::Providers
         parse_base_item(eap).merge(specific)
       end
 
+      def parse_fuse_server(fuse_server, name = nil)
+        specific = {
+          :name      => name || 'Fuse Server',
+          # :hostname  => _('not yet available'),
+          # :product   => 'Fuse',
+        }
+        parse_base_item(fuse_server).merge(specific)
+      end
+
+      def parse_camel_context(context)
+        specific = {
+          :name      => parse_camel_context_name(context.name),
+        }
+        parse_base_item(context).merge(specific).except(:properties)
+      end
+
+      def parse_camel_entity(entity, config)
+        specific = {
+          :name             => entity.name,
+          :entity_type      => entity.type_path.split(';')[-1].sub(/%20/, ' '),
+        }
+        if !config.empty? && !config['value'].empty? && config['value'].respond_to?(:except)
+          specific[:properties] = config['value']
+        end
+        parse_base_item(entity).merge(specific)
+      end
+
       private
 
       def parse_base_item(item)
@@ -313,6 +372,10 @@ module ManageIQ::Providers
 
       def parse_standalone_server_name(name)
         name.sub(/~~$/, '').sub(/^.*?~/, '')
+      end
+
+      def parse_camel_context_name(name)
+        name.sub(/^Camel Context "/, '').chomp('"')
       end
     end
   end
