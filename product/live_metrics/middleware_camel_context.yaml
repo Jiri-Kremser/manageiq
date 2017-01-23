@@ -1,0 +1,12 @@
+#
+# LiveMetrics configuration file
+#
+#   It defines the live metrics supported in a model that includes a LiveMetricsMixin.
+#   It maps the native id used in the provider for a metric with the column where this metric will be available in
+#   a LiveMetric virtual model.
+#
+#   Format:
+#   - Provider native metric type id: MiQ metric id
+#
+supported_metrics:
+  - ExchangesCompleted: ExchangesCompleted
