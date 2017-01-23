@@ -315,8 +315,8 @@ module ManageIQ::Providers
       def parse_fuse_server(fuse_server, name = nil)
         specific = {
           :name      => name || 'Fuse Server',
-          # :hostname  => _('not yet available'),
-          # :product   => 'Fuse',
+          :hostname  => _('not yet available'),
+          :product   => 'Fuse',
         }
         parse_base_item(fuse_server).merge(specific)
       end
