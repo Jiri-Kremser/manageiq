@@ -12,6 +12,8 @@ module ManageIQ::Providers
     require_nested :MiddlewareDatasource
     require_nested :MiddlewareMessaging
     require_nested :MiddlewareServer
+    require_nested :MiddlewareCamelContext
+    require_nested :MiddlewareCamelEntity
     require_nested :RefreshParser
     require_nested :RefreshWorker
     require_nested :Refresher

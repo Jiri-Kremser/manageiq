@@ -1,0 +1,748 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (linux-gnu x86_64) ruby/2.3.0p0
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '233'
+      Date:
+      - Tue, 24 Jan 2017 18:04:58 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "Implementation-Version" : "1.1.3.Final",
+          "Built-From-Git-SHA1" : "cd31cfcb438098b6d56886e4043f4ac51bb80fb0",
+          "Inventory-Implementation" : "org.hawkular.inventory.impl.tinkerpop.TinkerpopInventory",
+          "Initialized" : "true"
+        }
+    http_version: 
+  recorded_at: Tue, 24 Jan 2017 18:04:58 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (linux-gnu x86_64) ruby/2.3.0p0
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '133'
+      Date:
+      - Tue, 24 Jan 2017 18:04:58 GMT
+    body:
+      encoding: UTF-8
+      string: '{"MetricsService":"STARTED","Implementation-Version":"0.21.5.Final","Built-From-Git-SHA1":"e779588593f13224225356a94f1d8642fbccb30f"}'
+    http_version: 
+  recorded_at: Tue, 24 Jan 2017 18:04:58 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/traversal/f;8044c162-6682-4076-b2ac-646223e308e2/r;My%20Remote%20JMX~jboss.as:core-service=patching,layer=fuse/r;My%20Remote%20JMX~org.apache.camel:context=camel-1,name=%22camel-1%22,type=context/rl;incorporates/type=m?sort=id
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (linux-gnu x86_64) ruby/2.3.0p0
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 24 Jan 2017 18:04:58 GMT
+      X-Total-Count:
+      - '8'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '11325'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/traversal/f;8044c162-6682-4076-b2ac-646223e308e2/r;My%20Remote%20JMX~jboss.as:core-service%3Dpatching%2Clayer%3Dfuse/r;My%20Remote%20JMX~org.apache.camel:context%3Dcamel-1%2Cname%3D%22camel-1%22%2Ctype%3Dcontext/rl;incorporates/type=m?sort=id>;
+        rel="current"
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "path" : "/t;hawkular/f;8044c162-6682-4076-b2ac-646223e308e2/r;My%20Remote%20JMX~jboss.as:core-service%3Dpatching%2Clayer%3Dfuse/r;My%20Remote%20JMX~org.apache.camel:context%3Dcamel-1%2Cname%3D%22camel-1%22%2Ctype%3Dcontext/m;MI~R~%5B8044c162-6682-4076-b2ac-646223e308e2%2FMy%20Remote%20JMX~org.apache.camel:context%3Dcamel-1%2Cname%3D%22camel-1%22%2Ctype%3Dcontext%5D~MT~CamelProcessorMetrics~ExchangesCompleted",
+          "properties" : {
+            "hawkular-metric-id" : "Camel Context \"camel-1\"_ExchangesCompleted"
+          },
+          "name" : "ExchangesCompleted",
+          "identityHash" : "d87d7b4e6f50bffd79f74638bb6c527c50a68380",
+          "contentHash" : "4b72499de9f3d1b72e10264894901eede4b231c",
+          "syncHash" : "84d8e5b9471a82ddad24eb60954979d0774a0",
+          "type" : {
+            "path" : "/t;hawkular/f;8044c162-6682-4076-b2ac-646223e308e2/mt;CamelProcessorMetrics~ExchangesCompleted",
+            "name" : "ExchangesCompleted",
+            "identityHash" : "fd500c2f0b2b1846b5e99788763a955d63438a7",
+            "contentHash" : "9b2741df72b8cc3f272dec94d6f4340940d673",
+            "syncHash" : "be33f08fa7f97dbd91228197e06020eab4fcdf85",
+            "unit" : "NONE",
+            "metricDataType" : "counter",
+            "collectionInterval" : 30,
+            "type" : "COUNTER",
+            "id" : "CamelProcessorMetrics~ExchangesCompleted"
+          },
+          "id" : "MI~R~[8044c162-6682-4076-b2ac-646223e308e2/My Remote JMX~org.apache.camel:context=camel-1,name=\"camel-1\",type=context]~MT~CamelProcessorMetrics~ExchangesCompleted"
+        }, {
+          "path" : "/t;hawkular/f;8044c162-6682-4076-b2ac-646223e308e2/r;My%20Remote%20JMX~jboss.as:core-service%3Dpatching%2Clayer%3Dfuse/r;My%20Remote%20JMX~org.apache.camel:context%3Dcamel-1%2Cname%3D%22camel-1%22%2Ctype%3Dcontext/m;MI~R~%5B8044c162-6682-4076-b2ac-646223e308e2%2FMy%20Remote%20JMX~org.apache.camel:context%3Dcamel-1%2Cname%3D%22camel-1%22%2Ctype%3Dcontext%5D~MT~CamelProcessorMetrics~ExchangesFailed",
+          "properties" : {
+            "hawkular-metric-id" : "Camel Context \"camel-1\"_ExchangesFailed"
+          },
+          "name" : "ExchangesFailed",
+          "identityHash" : "9322397670aa4f9d37842b8ce89f33dd58ed7e2",
+          "contentHash" : "2aa8ef922924947baaf23dd357b01a7751a16097",
+          "syncHash" : "81b21e99d434b892c93ec411ea7a12189f12",
+          "type" : {
+            "path" : "/t;hawkular/f;8044c162-6682-4076-b2ac-646223e308e2/mt;CamelProcessorMetrics~ExchangesFailed",
+            "name" : "ExchangesFailed",
+            "identityHash" : "56cd3a1baffb514d1791196e5b9825c5761cf",
+            "contentHash" : "99557481b3f3e45c19de4f3f3190a03c31bbc6bc",
+            "syncHash" : "5f73ecc94458ec841798126620c1d387b324fb51",
+            "unit" : "NONE",
+            "metricDataType" : "counter",
+            "collectionInterval" : 1800,
+            "type" : "COUNTER",
+            "id" : "CamelProcessorMetrics~ExchangesFailed"
+          },
+          "id" : "MI~R~[8044c162-6682-4076-b2ac-646223e308e2/My Remote JMX~org.apache.camel:context=camel-1,name=\"camel-1\",type=context]~MT~CamelProcessorMetrics~ExchangesFailed"
+        }, {
+          "path" : "/t;hawkular/f;8044c162-6682-4076-b2ac-646223e308e2/r;My%20Remote%20JMX~jboss.as:core-service%3Dpatching%2Clayer%3Dfuse/r;My%20Remote%20JMX~org.apache.camel:context%3Dcamel-1%2Cname%3D%22camel-1%22%2Ctype%3Dcontext/m;MI~R~%5B8044c162-6682-4076-b2ac-646223e308e2%2FMy%20Remote%20JMX~org.apache.camel:context%3Dcamel-1%2Cname%3D%22camel-1%22%2Ctype%3Dcontext%5D~MT~CamelProcessorMetrics~ExchangesTotal",
+          "properties" : {
+            "hawkular-metric-id" : "Camel Context \"camel-1\"_ExchangesTotal"
+          },
+          "name" : "ExchangesTotal",
+          "identityHash" : "1d6d397f50a8a1cf9d2e4498bc621aeab2a32e8",
+          "contentHash" : "d57e2732a4bb603425d6ef7e640cd885c87f83",
+          "syncHash" : "d9a38c7944a8eb8a1d6d69c6803c4c29a37284",
+          "type" : {
+            "path" : "/t;hawkular/f;8044c162-6682-4076-b2ac-646223e308e2/mt;CamelProcessorMetrics~ExchangesTotal",
+            "name" : "ExchangesTotal",
+            "identityHash" : "a433531f618b711824442cf49c0493a12b3ad89",
+            "contentHash" : "449229f95af8bb5c8f2189f3403267b3bc1ca04c",
+            "syncHash" : "87998ce259f36a31e2d2ed67bb34aca3d3628f",
+            "unit" : "NONE",
+            "metricDataType" : "counter",
+            "collectionInterval" : 30,
+            "type" : "COUNTER",
+            "id" : "CamelProcessorMetrics~ExchangesTotal"
+          },
+          "id" : "MI~R~[8044c162-6682-4076-b2ac-646223e308e2/My Remote JMX~org.apache.camel:context=camel-1,name=\"camel-1\",type=context]~MT~CamelProcessorMetrics~ExchangesTotal"
+        }, {
+          "path" : "/t;hawkular/f;8044c162-6682-4076-b2ac-646223e308e2/r;My%20Remote%20JMX~jboss.as:core-service%3Dpatching%2Clayer%3Dfuse/r;My%20Remote%20JMX~org.apache.camel:context%3Dcamel-1%2Cname%3D%22camel-1%22%2Ctype%3Dcontext/m;MI~R~%5B8044c162-6682-4076-b2ac-646223e308e2%2FMy%20Remote%20JMX~org.apache.camel:context%3Dcamel-1%2Cname%3D%22camel-1%22%2Ctype%3Dcontext%5D~MT~CamelProcessorMetrics~LastProcessingTime",
+          "properties" : {
+            "hawkular-metric-id" : "Camel Context \"camel-1\"_LastProcessingTime"
+          },
+          "name" : "LastProcessingTime",
+          "identityHash" : "5546f64ad115ef98d8082ca9c6f602bfa2cd3ac",
+          "contentHash" : "4d36e978c15fe1f48ce8f91fcb72f5ad91a6438",
+          "syncHash" : "6653c925f7b07c26a452cc84e7e1b3d9adb44af",
+          "type" : {
+            "path" : "/t;hawkular/f;8044c162-6682-4076-b2ac-646223e308e2/mt;CamelProcessorMetrics~LastProcessingTime",
+            "name" : "LastProcessingTime",
+            "identityHash" : "59a8fb2aef223253e8be9996bd5ea26756cf946",
+            "contentHash" : "ab3e9477296ababe6758242eb95ab50a5b37afa",
+            "syncHash" : "392a2b52f82a5fa5e8248411f5ffa4ee17ccc7d",
+            "unit" : "NONE",
+            "metricDataType" : "gauge",
+            "collectionInterval" : 1800,
+            "type" : "GAUGE",
+            "id" : "CamelProcessorMetrics~LastProcessingTime"
+          },
+          "id" : "MI~R~[8044c162-6682-4076-b2ac-646223e308e2/My Remote JMX~org.apache.camel:context=camel-1,name=\"camel-1\",type=context]~MT~CamelProcessorMetrics~LastProcessingTime"
+        }, {
+          "path" : "/t;hawkular/f;8044c162-6682-4076-b2ac-646223e308e2/r;My%20Remote%20JMX~jboss.as:core-service%3Dpatching%2Clayer%3Dfuse/r;My%20Remote%20JMX~org.apache.camel:context%3Dcamel-1%2Cname%3D%22camel-1%22%2Ctype%3Dcontext/m;MI~R~%5B8044c162-6682-4076-b2ac-646223e308e2%2FMy%20Remote%20JMX~org.apache.camel:context%3Dcamel-1%2Cname%3D%22camel-1%22%2Ctype%3Dcontext%5D~MT~CamelProcessorMetrics~MaxProcessingTime",
+          "properties" : {
+            "hawkular-metric-id" : "Camel Context \"camel-1\"_MaxProcessingTime"
+          },
+          "name" : "MaxProcessingTime",
+          "identityHash" : "dd48c6e257ffdd9ba454c0f3af144b6a252b99e",
+          "contentHash" : "fbab3bc946d5e383d23eda32a52fcc9567af18",
+          "syncHash" : "a877904c3468369496d831378e453b435ba95bb",
+          "type" : {
+            "path" : "/t;hawkular/f;8044c162-6682-4076-b2ac-646223e308e2/mt;CamelProcessorMetrics~MaxProcessingTime",
+            "name" : "MaxProcessingTime",
+            "identityHash" : "93bb69b5c6978956790c52412e760b6a6f439eb",
+            "contentHash" : "5aaa33b9b7254e922fa5ddb214f052f029f0cf",
+            "syncHash" : "2fb35c2e54ee26f62a095829a4f305c4cc2ee",
+            "unit" : "NONE",
+            "metricDataType" : "gauge",
+            "collectionInterval" : 1800,
+            "type" : "GAUGE",
+            "id" : "CamelProcessorMetrics~MaxProcessingTime"
+          },
+          "id" : "MI~R~[8044c162-6682-4076-b2ac-646223e308e2/My Remote JMX~org.apache.camel:context=camel-1,name=\"camel-1\",type=context]~MT~CamelProcessorMetrics~MaxProcessingTime"
+        }, {
+          "path" : "/t;hawkular/f;8044c162-6682-4076-b2ac-646223e308e2/r;My%20Remote%20JMX~jboss.as:core-service%3Dpatching%2Clayer%3Dfuse/r;My%20Remote%20JMX~org.apache.camel:context%3Dcamel-1%2Cname%3D%22camel-1%22%2Ctype%3Dcontext/m;MI~R~%5B8044c162-6682-4076-b2ac-646223e308e2%2FMy%20Remote%20JMX~org.apache.camel:context%3Dcamel-1%2Cname%3D%22camel-1%22%2Ctype%3Dcontext%5D~MT~CamelProcessorMetrics~MeanProcessingTime",
+          "properties" : {
+            "hawkular-metric-id" : "Camel Context \"camel-1\"_MeanProcessingTime"
+          },
+          "name" : "MeanProcessingTime",
+          "identityHash" : "d3a41d922cccfcdb2e39746b80ad288e9ee07315",
+          "contentHash" : "18d68cd3f92836f045bf69b7ec5177c3afa64f56",
+          "syncHash" : "4e699e6f4bfb868659eaca282320379dda41a92",
+          "type" : {
+            "path" : "/t;hawkular/f;8044c162-6682-4076-b2ac-646223e308e2/mt;CamelProcessorMetrics~MeanProcessingTime",
+            "name" : "MeanProcessingTime",
+            "identityHash" : "dee31884ad38df7cd7901b6bdcf927ce89a5a4",
+            "contentHash" : "d3ccb5c7ef576d92fb2ecf5636426705d3f869a",
+            "syncHash" : "5db954a22f3acc5c8b79f53b86cc5b1b4422c51",
+            "unit" : "NONE",
+            "metricDataType" : "gauge",
+            "collectionInterval" : 1800,
+            "type" : "GAUGE",
+            "id" : "CamelProcessorMetrics~MeanProcessingTime"
+          },
+          "id" : "MI~R~[8044c162-6682-4076-b2ac-646223e308e2/My Remote JMX~org.apache.camel:context=camel-1,name=\"camel-1\",type=context]~MT~CamelProcessorMetrics~MeanProcessingTime"
+        }, {
+          "path" : "/t;hawkular/f;8044c162-6682-4076-b2ac-646223e308e2/r;My%20Remote%20JMX~jboss.as:core-service%3Dpatching%2Clayer%3Dfuse/r;My%20Remote%20JMX~org.apache.camel:context%3Dcamel-1%2Cname%3D%22camel-1%22%2Ctype%3Dcontext/m;MI~R~%5B8044c162-6682-4076-b2ac-646223e308e2%2FMy%20Remote%20JMX~org.apache.camel:context%3Dcamel-1%2Cname%3D%22camel-1%22%2Ctype%3Dcontext%5D~MT~CamelProcessorMetrics~MinProcessingTime",
+          "properties" : {
+            "hawkular-metric-id" : "Camel Context \"camel-1\"_MinProcessingTime"
+          },
+          "name" : "MinProcessingTime",
+          "identityHash" : "e8e3ad1ffeb09bba1598e9c55331fc6d4b4febc",
+          "contentHash" : "16f3543663d7bc661ec1a2307a86f2acc6e78a",
+          "syncHash" : "468ec309b3b4cce11fdbd9b2f6ddc17cc60e45b",
+          "type" : {
+            "path" : "/t;hawkular/f;8044c162-6682-4076-b2ac-646223e308e2/mt;CamelProcessorMetrics~MinProcessingTime",
+            "name" : "MinProcessingTime",
+            "identityHash" : "389882ae2fa436611ac39c55fac7991999bd426",
+            "contentHash" : "91c93e6bf6769f8e7131e059fb2b2b532b315c",
+            "syncHash" : "64325318383795495c35ec7cf0b62cf73e3035c1",
+            "unit" : "NONE",
+            "metricDataType" : "gauge",
+            "collectionInterval" : 1800,
+            "type" : "GAUGE",
+            "id" : "CamelProcessorMetrics~MinProcessingTime"
+          },
+          "id" : "MI~R~[8044c162-6682-4076-b2ac-646223e308e2/My Remote JMX~org.apache.camel:context=camel-1,name=\"camel-1\",type=context]~MT~CamelProcessorMetrics~MinProcessingTime"
+        }, {
+          "path" : "/t;hawkular/f;8044c162-6682-4076-b2ac-646223e308e2/r;My%20Remote%20JMX~jboss.as:core-service%3Dpatching%2Clayer%3Dfuse/r;My%20Remote%20JMX~org.apache.camel:context%3Dcamel-1%2Cname%3D%22camel-1%22%2Ctype%3Dcontext/m;MI~R~%5B8044c162-6682-4076-b2ac-646223e308e2%2FMy%20Remote%20JMX~org.apache.camel:context%3Dcamel-1%2Cname%3D%22camel-1%22%2Ctype%3Dcontext%5D~MT~CamelProcessorMetrics~TotalProcessingTime",
+          "properties" : {
+            "hawkular-metric-id" : "Camel Context \"camel-1\"_TotalProcessingTime"
+          },
+          "name" : "TotalProcessingTime",
+          "identityHash" : "38886a8076d48728624667057aaa72cd197c9b",
+          "contentHash" : "fdfd58a1baf252cfdf127982b3a963bbee4bb2",
+          "syncHash" : "685b4997a8f47e846bdf8b9986f2c34f385619d5",
+          "type" : {
+            "path" : "/t;hawkular/f;8044c162-6682-4076-b2ac-646223e308e2/mt;CamelProcessorMetrics~TotalProcessingTime",
+            "name" : "TotalProcessingTime",
+            "identityHash" : "c335fece7c13c590f9981a78754bc8cde26d8e6",
+            "contentHash" : "a4fd842c69eb5c85ca12890d648592c6eb7d245",
+            "syncHash" : "2886ab0acc56fe7a863fd3e155ba168bb790",
+            "unit" : "NONE",
+            "metricDataType" : "gauge",
+            "collectionInterval" : 1800,
+            "type" : "GAUGE",
+            "id" : "CamelProcessorMetrics~TotalProcessingTime"
+          },
+          "id" : "MI~R~[8044c162-6682-4076-b2ac-646223e308e2/My Remote JMX~org.apache.camel:context=camel-1,name=\"camel-1\",type=context]~MT~CamelProcessorMetrics~TotalProcessingTime"
+        } ]
+    http_version: 
+  recorded_at: Tue, 24 Jan 2017 18:04:58 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/Camel%20Context%20%22camel-1%22_ExchangesCompleted
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (linux-gnu x86_64) ruby/2.3.0p0
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 24 Jan 2017 18:04:58 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '221'
+    body:
+      encoding: UTF-8
+      string: '{"id":"Camel Context \"camel-1\"_ExchangesCompleted","tags":{"host":"127.0.0.1","server":"My
+        Remote JMX"},"dataRetention":7,"type":"counter","tenantId":"hawkular","minTimestamp":1485273165018,"maxTimestamp":1485281084012}'
+    http_version: 
+  recorded_at: Tue, 24 Jan 2017 18:04:58 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/Camel%20Context%20%22camel-1%22_ExchangesFailed
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (linux-gnu x86_64) ruby/2.3.0p0
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 24 Jan 2017 18:04:58 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '218'
+    body:
+      encoding: UTF-8
+      string: '{"id":"Camel Context \"camel-1\"_ExchangesFailed","tags":{"host":"127.0.0.1","server":"My
+        Remote JMX"},"dataRetention":7,"type":"counter","tenantId":"hawkular","minTimestamp":1485273165003,"maxTimestamp":1485279531004}'
+    http_version: 
+  recorded_at: Tue, 24 Jan 2017 18:04:58 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/Camel%20Context%20%22camel-1%22_ExchangesTotal
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (linux-gnu x86_64) ruby/2.3.0p0
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 24 Jan 2017 18:04:58 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '217'
+    body:
+      encoding: UTF-8
+      string: '{"id":"Camel Context \"camel-1\"_ExchangesTotal","tags":{"host":"127.0.0.1","server":"My
+        Remote JMX"},"dataRetention":7,"type":"counter","tenantId":"hawkular","minTimestamp":1485273165024,"maxTimestamp":1485281084002}'
+    http_version: 
+  recorded_at: Tue, 24 Jan 2017 18:04:58 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges/Camel%20Context%20%22camel-1%22_LastProcessingTime
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (linux-gnu x86_64) ruby/2.3.0p0
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 24 Jan 2017 18:04:58 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '219'
+    body:
+      encoding: UTF-8
+      string: '{"id":"Camel Context \"camel-1\"_LastProcessingTime","tags":{"host":"127.0.0.1","server":"My
+        Remote JMX"},"dataRetention":7,"type":"gauge","tenantId":"hawkular","minTimestamp":1485273165027,"maxTimestamp":1485279531021}'
+    http_version: 
+  recorded_at: Tue, 24 Jan 2017 18:04:58 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges/Camel%20Context%20%22camel-1%22_MaxProcessingTime
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (linux-gnu x86_64) ruby/2.3.0p0
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 24 Jan 2017 18:04:58 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '218'
+    body:
+      encoding: UTF-8
+      string: '{"id":"Camel Context \"camel-1\"_MaxProcessingTime","tags":{"host":"127.0.0.1","server":"My
+        Remote JMX"},"dataRetention":7,"type":"gauge","tenantId":"hawkular","minTimestamp":1485273165020,"maxTimestamp":1485279531017}'
+    http_version: 
+  recorded_at: Tue, 24 Jan 2017 18:04:58 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges/Camel%20Context%20%22camel-1%22_MeanProcessingTime
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (linux-gnu x86_64) ruby/2.3.0p0
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 24 Jan 2017 18:04:58 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '219'
+    body:
+      encoding: UTF-8
+      string: '{"id":"Camel Context \"camel-1\"_MeanProcessingTime","tags":{"host":"127.0.0.1","server":"My
+        Remote JMX"},"dataRetention":7,"type":"gauge","tenantId":"hawkular","minTimestamp":1485273165037,"maxTimestamp":1485279531024}'
+    http_version: 
+  recorded_at: Tue, 24 Jan 2017 18:04:58 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges/Camel%20Context%20%22camel-1%22_MinProcessingTime
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (linux-gnu x86_64) ruby/2.3.0p0
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 24 Jan 2017 18:04:58 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '218'
+    body:
+      encoding: UTF-8
+      string: '{"id":"Camel Context \"camel-1\"_MinProcessingTime","tags":{"host":"127.0.0.1","server":"My
+        Remote JMX"},"dataRetention":7,"type":"gauge","tenantId":"hawkular","minTimestamp":1485273165001,"maxTimestamp":1485279531002}'
+    http_version: 
+  recorded_at: Tue, 24 Jan 2017 18:04:58 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges/Camel%20Context%20%22camel-1%22_TotalProcessingTime
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (linux-gnu x86_64) ruby/2.3.0p0
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 24 Jan 2017 18:04:58 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '220'
+    body:
+      encoding: UTF-8
+      string: '{"id":"Camel Context \"camel-1\"_TotalProcessingTime","tags":{"host":"127.0.0.1","server":"My
+        Remote JMX"},"dataRetention":7,"type":"gauge","tenantId":"hawkular","minTimestamp":1485273165007,"maxTimestamp":1485279531010}'
+    http_version: 
+  recorded_at: Tue, 24 Jan 2017 18:04:58 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/metrics/stats/query
+    body:
+      encoding: UTF-8
+      string: '{"metrics":{"gauge":["Camel Context \"camel-1\"_LastProcessingTime","Camel
+        Context \"camel-1\"_MaxProcessingTime","Camel Context \"camel-1\"_MeanProcessingTime","Camel
+        Context \"camel-1\"_MinProcessingTime","Camel Context \"camel-1\"_TotalProcessingTime"],"counter":["Camel
+        Context \"camel-1\"_ExchangesCompleted","Camel Context \"camel-1\"_ExchangesFailed","Camel
+        Context \"camel-1\"_ExchangesTotal"],"availability":[]},"start":1476864000000,"end":1476874800001,"bucketDuration":"3600s","types":["gauge","gauge_rate","counter","counter_rate","availability"]}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (linux-gnu x86_64) ruby/2.3.0p0
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '559'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 24 Jan 2017 18:04:59 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '4471'
+    body:
+      encoding: UTF-8
+      string: '{"gauge":{"Camel Context \"camel-1\"_MaxProcessingTime":[{"start":1476864000000,"end":1476867600000,"empty":true},{"start":1476867600000,"end":1476871200000,"empty":true},{"start":1476871200000,"end":1476874800000,"empty":true},{"start":1476874800000,"end":1476878400000,"empty":true}],"Camel
+        Context \"camel-1\"_TotalProcessingTime":[{"start":1476864000000,"end":1476867600000,"empty":true},{"start":1476867600000,"end":1476871200000,"empty":true},{"start":1476871200000,"end":1476874800000,"empty":true},{"start":1476874800000,"end":1476878400000,"empty":true}],"Camel
+        Context \"camel-1\"_LastProcessingTime":[{"start":1476864000000,"end":1476867600000,"empty":true},{"start":1476867600000,"end":1476871200000,"empty":true},{"start":1476871200000,"end":1476874800000,"empty":true},{"start":1476874800000,"end":1476878400000,"empty":true}],"Camel
+        Context \"camel-1\"_MinProcessingTime":[{"start":1476864000000,"end":1476867600000,"empty":true},{"start":1476867600000,"end":1476871200000,"empty":true},{"start":1476871200000,"end":1476874800000,"empty":true},{"start":1476874800000,"end":1476878400000,"empty":true}],"Camel
+        Context \"camel-1\"_MeanProcessingTime":[{"start":1476864000000,"end":1476867600000,"empty":true},{"start":1476867600000,"end":1476871200000,"empty":true},{"start":1476871200000,"end":1476874800000,"empty":true},{"start":1476874800000,"end":1476878400000,"empty":true}]},"counter_rate":{"Camel
+        Context \"camel-1\"_ExchangesFailed":[{"start":1476864000000,"end":1476867600000,"empty":true},{"start":1476867600000,"end":1476871200000,"empty":true},{"start":1476871200000,"end":1476874800000,"empty":true},{"start":1476874800000,"end":1476878400000,"empty":true}],"Camel
+        Context \"camel-1\"_ExchangesCompleted":[{"start":1476864000000,"end":1476867600000,"empty":true},{"start":1476867600000,"end":1476871200000,"empty":true},{"start":1476871200000,"end":1476874800000,"empty":true},{"start":1476874800000,"end":1476878400000,"empty":true}],"Camel
+        Context \"camel-1\"_ExchangesTotal":[{"start":1476864000000,"end":1476867600000,"empty":true},{"start":1476867600000,"end":1476871200000,"empty":true},{"start":1476871200000,"end":1476874800000,"empty":true},{"start":1476874800000,"end":1476878400000,"empty":true}]},"gauge_rate":{"Camel
+        Context \"camel-1\"_MaxProcessingTime":[{"start":1476864000000,"end":1476867600000,"empty":true},{"start":1476867600000,"end":1476871200000,"empty":true},{"start":1476871200000,"end":1476874800000,"empty":true},{"start":1476874800000,"end":1476878400000,"empty":true}],"Camel
+        Context \"camel-1\"_TotalProcessingTime":[{"start":1476864000000,"end":1476867600000,"empty":true},{"start":1476867600000,"end":1476871200000,"empty":true},{"start":1476871200000,"end":1476874800000,"empty":true},{"start":1476874800000,"end":1476878400000,"empty":true}],"Camel
+        Context \"camel-1\"_LastProcessingTime":[{"start":1476864000000,"end":1476867600000,"empty":true},{"start":1476867600000,"end":1476871200000,"empty":true},{"start":1476871200000,"end":1476874800000,"empty":true},{"start":1476874800000,"end":1476878400000,"empty":true}],"Camel
+        Context \"camel-1\"_MinProcessingTime":[{"start":1476864000000,"end":1476867600000,"empty":true},{"start":1476867600000,"end":1476871200000,"empty":true},{"start":1476871200000,"end":1476874800000,"empty":true},{"start":1476874800000,"end":1476878400000,"empty":true}],"Camel
+        Context \"camel-1\"_MeanProcessingTime":[{"start":1476864000000,"end":1476867600000,"empty":true},{"start":1476867600000,"end":1476871200000,"empty":true},{"start":1476871200000,"end":1476874800000,"empty":true},{"start":1476874800000,"end":1476878400000,"empty":true}]},"counter":{"Camel
+        Context \"camel-1\"_ExchangesFailed":[{"start":1476864000000,"end":1476867600000,"empty":true},{"start":1476867600000,"end":1476871200000,"empty":true},{"start":1476871200000,"end":1476874800000,"empty":true},{"start":1476874800000,"end":1476878400000,"empty":true}],"Camel
+        Context \"camel-1\"_ExchangesCompleted":[{"start":1476864000000,"end":1476867600000,"empty":true},{"start":1476867600000,"end":1476871200000,"empty":true},{"start":1476871200000,"end":1476874800000,"empty":true},{"start":1476874800000,"end":1476878400000,"empty":true}],"Camel
+        Context \"camel-1\"_ExchangesTotal":[{"start":1476864000000,"end":1476867600000,"empty":true},{"start":1476867600000,"end":1476871200000,"empty":true},{"start":1476871200000,"end":1476874800000,"empty":true},{"start":1476874800000,"end":1476878400000,"empty":true}]}}'
+    http_version: 
+  recorded_at: Tue, 24 Jan 2017 18:04:59 GMT
+recorded_with: VCR 3.0.3

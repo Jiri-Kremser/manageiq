@@ -1,0 +1,17 @@
+# Middleware Camel Context daily performance chart layouts
+---
+- :title: Exchanges
+  :type: Line
+  :columns:
+  - mw_camel_exchanges_completed
+  - mw_camel_exchanges_failed
+  - mw_camel_exchanges_total
+
+- :title: Responsiveness
+  :type: Line
+  :columns:
+  - mw_camel_last_processing_time
+  - mw_camel_max_processing_time
+  - mw_camel_mean_processing_time
+  - mw_camel_min_processing_time
+  - mw_camel_total_processing_time

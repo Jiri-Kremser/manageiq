@@ -1,0 +1,100 @@
+#
+# This is an MIQ Report configuration file
+#   Single value parameters are specified as:
+#     single_value_parm: value
+#   Multiple value parameters are specified as:
+#     multi_value_parm:
+#       - value 1
+#       - value 2
+#
+
+# Report title
+title: "VIM Performance Hourly"
+
+# Menu name
+name: "VIM Performance Hourly"
+
+rpt_type: middleware
+
+# Main DB table report is based on
+db: LiveMetric
+
+# Columns to fetch from the main table
+cols:
+- timestamp
+- mw_camel_exchanges_completed
+- mw_camel_exchanges_failed
+- mw_camel_exchanges_total
+- mw_camel_last_processing_time
+- mw_camel_max_processing_time
+- mw_camel_mean_processing_time
+- mw_camel_min_processing_time
+- mw_camel_total_processing_time
+
+# Included tables (joined, has_one, has_many) and columns
+include:
+
+# Order of columns (from all tables)
+col_order:
+- timestamp
+- mw_camel_exchanges_completed
+- mw_camel_exchanges_failed
+- mw_camel_exchanges_total
+- mw_camel_last_processing_time
+- mw_camel_max_processing_time
+- mw_camel_mean_processing_time
+- mw_camel_min_processing_time
+- mw_camel_total_processing_time
+
+# Column titles, in order
+headers:
+- Date/Time
+- Exchanges Completed
+- Exchanges Failed
+- Exchanges Total
+- Last Processing Time
+- Max Processing Time
+- Mean Processing Time
+- Min Processing Time
+- Total Processing Time
+
+# Condition expression for search filtering
+conditions: 
+
+# Order string for the SQL query
+order: ascending
+
+# Columns to sort the report on, in order
+sortby: timestamp
+
+# Group rows (y=yes,n=no,c=count)
+group: n
+
+# Graph type
+#   Bar
+#   Column
+#   ColumnThreed
+#   ParallelThreedColumn
+#   Pie
+#   PieThreed
+#   StackedBar
+#   StackedColumn
+#   StackedThreedColumn
+
+graph: 
+  :type: Line
+  :columns:
+    - mw_camel_exchanges_completed
+    - mw_camel_exchanges_failed
+    - mw_camel_exchanges_total
+    - mw_camel_last_processing_time
+    - mw_camel_max_processing_time
+    - mw_camel_mean_processing_time
+    - mw_camel_min_processing_time
+    - mw_camel_total_processing_time
+
+# Dimensions of graph (1 or 2)
+#   Note: specifying 2 for a single dimension graph may not return expected results
+dims: 
+
+template_type: report

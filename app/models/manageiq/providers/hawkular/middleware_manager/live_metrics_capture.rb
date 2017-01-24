@@ -33,7 +33,11 @@ module ManageIQ::Providers
     end
 
     def parse_metric(metric)
-      {:id => metric.id, :name => @supported_metrics[metric.type_id], :type => metric.type, :unit => metric.unit}
+      hash = {:id => metric.id, :name => @supported_metrics[metric.type_id], :type => metric.type, :unit => metric.unit}
+        if metric.try(:properties).try(:has_key?, 'hawkular-metric-id')
+          hash[:'hawkular-metric-id'] = metric.properties['hawkular-metric-id']
+        end
+      hash
     end
 
     def parse_metrics_ids(metrics)
@@ -42,7 +46,7 @@ module ManageIQ::Providers
       avail_ids = []
       metrics_ids_map = {}
       metrics.each do |metric|
-        metric_id = metric[:id]
+        metric_id = metric.has_key?(:'hawkular-metric-id') ? metric[:'hawkular-metric-id'] : metric[:id]
         case metric[:type]
         when "GAUGE"        then gauge_ids.push(metric_id)
         when "COUNTER"      then counter_ids.push(metric_id)
@@ -100,10 +104,11 @@ module ManageIQ::Providers
 
     def first_and_last_capture(metric)
       validate_metric(metric)
+      metric_id = metric.has_key?(:'hawkular-metric-id') ? metric[:'hawkular-metric-id'] : metric[:id]
       case metric[:type]
-      when "GAUGE"        then min_max_timestamps(@gauges, metric[:id])
-      when "COUNTER"      then min_max_timestamps(@counters, metric[:id])
-      when "AVAILABILITY" then min_max_timestamps(@avail, metric[:id])
+      when "GAUGE"        then min_max_timestamps(@gauges, metric_id)
+      when "COUNTER"      then min_max_timestamps(@counters, metric_id)
+      when "AVAILABILITY" then min_max_timestamps(@avail, metric_id)
       else raise MetricValidationError, "Validation error: unknown type #{metric_type}"
       end
     end

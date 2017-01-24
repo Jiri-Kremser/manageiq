@@ -9,4 +9,11 @@
 #   - Provider native metric type id: MiQ metric id
 #
 supported_metrics:
-  - ExchangesCompleted: ExchangesCompleted
+  - CamelProcessorMetrics~ExchangesCompleted: mw_camel_exchanges_completed
+  - CamelProcessorMetrics~ExchangesFailed: mw_camel_exchanges_failed
+  - CamelProcessorMetrics~ExchangesTotal: mw_camel_exchanges_total
+  - CamelProcessorMetrics~LastProcessingTime: mw_camel_last_processing_time
+  - CamelProcessorMetrics~MaxProcessingTime: mw_camel_max_processing_time
+  - CamelProcessorMetrics~MeanProcessingTime: mw_camel_mean_processing_time
+  - CamelProcessorMetrics~MinProcessingTime: mw_camel_min_processing_time
+  - CamelProcessorMetrics~TotalProcessingTime:  mw_camel_total_processing_time
