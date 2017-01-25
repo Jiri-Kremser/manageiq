@@ -148,26 +148,32 @@ module EmsRefresh::SaveInventoryMiddleware
               else
                 []
               end
+    hashes.each do |h|
+      h[:ems_id] = ems.id
+    end
 
     save_inventory_multi(ems.middleware_fuse_servers, hashes, deletes, [:ems_ref], [:middleware_camel_contexts])
     store_ids_for_new_records(ems.middleware_fuse_servers, hashes, :ems_ref)
   end
 
-  def save_middleware_camel_contexts_inventory(ems, hashes, target = nil)
+  def save_middleware_camel_contexts_inventory(server, hashes, target = nil)
     return if hashes.nil?
-    target = ems if target.nil?
+    target = server if target.nil?
 
-    ems.middleware_camel_contexts(true)
+    server.middleware_camel_contexts(true)
     deletes = if target.kind_of?(ExtManagementSystem)
                 :use_association
               else
                 []
               end
+    hashes.each do |h|
+      h[:ems_id] = server.ems_id
+    end
 
     # todo? save_inventory_multi(ems.middleware_camel_contexts, hashes, deletes, [:ems_ref], [:middleware_camel_entities], [:middleware_fuse_server, :_object])
-    save_inventory_multi(ems.middleware_camel_contexts, hashes, deletes, [:ems_ref], [:middleware_camel_entities],
+    save_inventory_multi(server.middleware_camel_contexts, hashes, deletes, [:ems_ref], [:middleware_camel_entities],
                          [:middleware_fuse_server])
-    store_ids_for_new_records(ems.middleware_camel_contexts, hashes, :ems_ref)
+    store_ids_for_new_records(server.middleware_camel_contexts, hashes, :ems_ref)
   end
 
   def save_middleware_camel_entities_inventory(ems, hashes, target = nil)
