@@ -195,7 +195,6 @@ module ManageIQ::Providers
             @data[:middleware_fuse_servers] << parsed_fuse_server
           end
         end
-        binding.pry
       end
 
       def process_entity_with_config(server, entity, continuation)
